@@ -2,7 +2,7 @@ import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone";
 import connectDB from "./mongodb/connect.js";
 import * as dotenv from "dotenv";
-import typeDefs from "./SchemaQql.js";
+import typeDefs from "./typeDefs.js";
 import resolvers from "./resolvers.js";
 dotenv.config();
 
