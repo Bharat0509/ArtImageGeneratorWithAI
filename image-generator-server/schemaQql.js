@@ -1,5 +1,4 @@
-const typeDefs = `#graphql
-
+const typeDefs = `
   type Img
   { _id:String
     name:String
