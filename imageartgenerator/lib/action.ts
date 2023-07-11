@@ -5,7 +5,7 @@ import {
 } from "@/graphql";
 import { GraphQLClient } from "graphql-request";
 
-const client = new GraphQLClient("https://kind-foal-neckerchief.cyclic.app/");
+const client = new GraphQLClient("https://kind-foal-neckerchief.cyclic.app");
 
 const makeGraphQLRequest = async (query: string, variables = {}) => {
     try {

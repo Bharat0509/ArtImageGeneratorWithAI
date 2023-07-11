@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "./components/Card";
 import { getImages } from "@/lib/action";
+import RenderCards from "./components/RenderCard";
 type Image = {
     _id: string;
     name: string;
@@ -16,30 +17,16 @@ type CardsProps = {
     data?: Image[];
     title: string;
 };
-const RenderCards = ({ data, title }: CardsProps) => {
-    if (data!.length > 0) {
-        return (
-            <>
-                {data!.map((post, ind) => (
-                    <Card key={ind} {...post} />
-                ))}
-            </>
-        );
-    }
-    return (
-        <h2 className='mt-5 font-bold text-[#6449ff] text-xl uppercase'>
-            {title}
-        </h2>
-    );
-};
 
-export default async function Home() {
-    const [searchText, setSearchText] = useState(
-        "A Tree With Beautiful Leaves surrounded by Hills"
-    );
-
+const Home = async () => {
+    // const [data, setData] = useState<Image[]>([]);
+    // const fetchData = async () => {
     const data = (await getImages()) as ImagesType;
-
+    // setData(getData.images);
+    // };
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
     return (
         <section className='max-w-7xl mx-auto'>
             <div>
@@ -53,24 +40,30 @@ export default async function Home() {
                 <div className='mt-16'>{/* <FormField /> */}</div>
             </div>
             <div className='mt-10'>
-                {searchText && (
-                    <h2 className='font-medium text-[#666e75] text-xl mb-3'>
-                        Showing result for
-                        <span className='text-[#16171c]'> {searchText}</span>
-                    </h2>
-                )}
+                {/* {searchText && (
+                        <h2 className='font-medium text-[#666e75] text-xl mb-3'>
+                            Showing result for
+                            <span className='text-[#16171c]'>
+                                {" "}
+                                {searchText}
+                            </span>
+                        </h2>
+                    )} */}
                 <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  grid-cols-1 gap-3'>
-                    {searchText ? (
-                        <RenderCards
-                            data={data?.images}
-                            title='No search results found'
-                        />
-                    ) : (
-                        <RenderCards title='No posts found' />
-                    )}
+                    {/* {searchText ? (
+                            
+                        ) : ( */}
+                    {/* <RenderCards title='No posts found' /> */}
+                    {/* )} */}
                     {/* <GridView /> */}
+
+                    <RenderCards
+                        data={data.images}
+                        title='No search results found'
+                    />
                 </div>
             </div>
         </section>
     );
-}
+};
+export default Home;

@@ -1,9 +1,9 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useState } from "react";
 import FormField from "../components/FormField";
 import { getRandomPrompt } from "../utils";
 import Image from "next/image";
-import { createPost, generateImage, getImages } from "@/lib/action";
+import { createPost, generateImage } from "@/lib/action";
 import { useRouter } from "next/navigation";
 type GeneratedImage = {
     image: {
